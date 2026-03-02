@@ -1,6 +1,6 @@
 ---
 title: "Cider Vault - BITSCTF Write Up"
-date: 2026-02-26
+date: 2026-02-27
 tags: [BITSCTF, pwn]
 description: "This is the write up for Cider Vault chall - BITSCTF contest"
 ---
