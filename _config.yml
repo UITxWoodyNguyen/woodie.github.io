@@ -4,8 +4,8 @@
 title: wood13nqxy3n's Blog
 description: "A personal blog about coding, technology, and life."
 author: Woodie
-url: "https://woodie.github.io" # e.g. https://woodie.github.io
-baseurl: "" # Leave empty for user/org pages
+url: "https://uitxwoodynguyen.github.io"
+baseurl: "/woodie.github.io"
 
 # ============================================================
 # Build Settings
