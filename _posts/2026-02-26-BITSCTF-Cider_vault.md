@@ -1,15 +1,8 @@
 ---
-title: "El Diablo - BITSCTF Write Up"
+title: "Cider Vault - BITSCTF Write Up"
 date: 2026-02-26
 tags: [BITSCTF, pwn]
-description: "This is the write up for El Diablo chall - BITSCTF contest"
----
-
----
-title: "El Diablo - BITSCTF Write Up"
-date: 2026-02-26
-tags: [BITSCTF, pwn]
-description: "This is the write up for El Diablo chall - BITSCTF contest"
+description: "This is the write up for Cider Vault chall - BITSCTF contest"
 ---
 
 # Cider vault - BITSCTF Writeups
