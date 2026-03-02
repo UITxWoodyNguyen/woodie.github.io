@@ -6,16 +6,25 @@ permalink: /about/
 
 ## Hey there! 👋
 
-I'm **Woodie**, a developer who loves building things with code.
+I'm **Wood13nqxy3n** — a student, developer, and cybersecurity enthusiast.
 
-This blog is where I share my thoughts on **programming**, **technology**, and everything in between. I believe in learning by doing and sharing what I learn along the way.
+This blog is where I share my thoughts on **programming**, **technology**, **competitive programming**, and everything in between.
+
+### 🔗 Find me on
+
+[![github](https://img.shields.io/badge/github-UITxWoodyNguyen-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/UITxWoodyNguyen) [![hackmd](https://img.shields.io/badge/hackmd-thanhnguyne2403-9c27b0?style=for-the-badge&logo=markdown&logoColor=white)](https://hackmd.io/@thanhnguyne2403) [![codeforces](https://img.shields.io/badge/codeforces-Ronnied0734-ff8c00?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/Ronnied0734) [![vnoi](https://img.shields.io/badge/old_vnoi_account-thanhnguyen07-AA0000?style=for-the-badge&logo=codeforces&logoColor=white)](https://oj.vnoi.info/user/thanhnguyen07)
+
+### 🎓 Education
+
+- **2022 — 2025**: `22TI` @ **Luong The Vinh High School for the Gifted**
+- **2025 — Present**: `Information Security` @ **University of Information Technology (VNU-HCM)**
 
 ### What you'll find here
 
 - **Coding tutorials** — Practical guides and walkthroughs
+- **Competitive programming** — Problems, solutions, and techniques
 - **Tech insights** — Thoughts on tools, frameworks, and best practices
-- **Project showcases** — Things I've built and lessons learned
-- **Random musings** — Everything else that comes to mind
+- **Security** — Notes and writeups from the InfoSec world
 
 ### Tech Stack
 
@@ -27,10 +36,6 @@ This blog is built with:
 | GitHub Pages | Hosting |
 | Markdown | Content |
 | Vanilla JS | Interactivity |
-
-### Get in touch
-
-Find me on [GitHub](https://github.com/{{ site.github_username }}).
 
 ---
 
