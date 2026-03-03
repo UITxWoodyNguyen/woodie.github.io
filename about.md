@@ -19,12 +19,9 @@ This blog is where I share my thoughts on **programming**, **technology**, **com
 - **2022 — 2025**: `22TI` @ **Luong The Vinh High School for the Gifted**
 - **2025 — Present**: `Information Security` @ **University of Information Technology (VNU-HCM)**
 
-### What you'll find here
+### My team - UIT.k0dunqtool's Github repo
 
-- **Coding tutorials** — Practical guides and walkthroughs
-- **Competitive programming** — Problems, solutions, and techniques
-- **Tech insights** — Thoughts on tools, frameworks, and best practices
-- **Security** — Notes and writeups from the InfoSec world
+[![github](https://img.shields.io/badge/github-CTF-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/UITxWoodyNguyen/CTF)
 
 ### Tech Stack
 
