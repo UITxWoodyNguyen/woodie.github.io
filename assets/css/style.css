@@ -845,6 +845,7 @@ img {
   border-radius: var(--radius);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: relative;
 }
 
 .post-content pre code {
@@ -853,6 +854,41 @@ img {
   color: var(--text);
   font-size: 0.85rem;
   line-height: 1.6;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-family: inherit;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition), color var(--transition), background var(--transition);
+}
+
+.post-content pre:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  color: var(--text);
+  background: var(--hover);
+  border-color: var(--text-secondary);
+}
+
+.code-copy-btn.copied {
+  color: #3fb950;
+  border-color: #3fb950;
+  opacity: 1;
 }
 
 /* Tables */
