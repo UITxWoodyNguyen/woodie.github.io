@@ -283,13 +283,19 @@
       });
     }
 
-    var expandBtn = document.getElementById('toc-expand-all');
+    var collapseBtn = document.getElementById('toc-collapse-all');
     var topBtn = document.getElementById('toc-top');
     var bottomBtn = document.getElementById('toc-bottom');
+    var isCollapsed = false;
 
-    if (expandBtn) {
-      expandBtn.addEventListener('click', function () {
-        postContent.querySelectorAll('details').forEach(function (d) { d.open = true; });
+    if (collapseBtn) {
+      collapseBtn.addEventListener('click', function () {
+        var h3links = tocNav.querySelectorAll('.toc-link[data-level="3"], .toc-link[data-level="4"]');
+        isCollapsed = !isCollapsed;
+        h3links.forEach(function (l) {
+          l.style.display = isCollapsed ? 'none' : '';
+        });
+        collapseBtn.textContent = isCollapsed ? 'Expand all' : 'Collapse all';
       });
     }
     if (topBtn) {
