@@ -1,6 +1,6 @@
 ---
 title: "Stack Cache - picoCTF Write Up"
-date: 2025-03-03
+date: 2026-03-03
 tags: [picoCTF, pwn]
 description: "This is an example challenge of Buffer Overflow!"
 ---
