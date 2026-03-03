@@ -356,7 +356,7 @@ flag_chunks = [
 
 ---
 
-## 6. Complete Exploit Code
+### Exploit Code
 
 ```python
 #!/usr/bin/env python3
@@ -507,7 +507,7 @@ if __name__ == '__main__':
 
 ---
 
-## 7. Exploit Execution
+### Exploit Execution
 
 ```bash
 $ python3 exploit.py
