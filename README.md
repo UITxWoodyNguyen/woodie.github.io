@@ -169,91 +169,180 @@ myblog/
 
 ## Category System
 
-Posts are organized under `_posts/ctf/` with two sub-categories:
+The blog uses a **2-level hierarchy**: **Category → Sub-category**.
 
-| Category     | Path                                  | Description              |
-|-------------|---------------------------------------|--------------------------|
-| Tournament  | `_posts/ctf/tournament/<Contest>/`    | CTF competition writeups |
-| Training    | `_posts/ctf/training/<Platform>/`     | Practice/training writeups |
+```
+_posts/
+  <category>/
+    <sub-category>/
+      <group>/
+        YYYY-MM-DD-post-name.md
+```
 
-### Adding a New Contest (Tournament)
+Currently:
 
-1. Create a new folder under `_posts/ctf/tournament/`:
-   ```bash
-   mkdir _posts/ctf/tournament/NewContestName
-   ```
+```
+_posts/
+  ctf/                         ← Category: CTF
+    tournament/                ← Sub-category: Tournament
+      PascalCTF/               ← Contest group
+      BITSCTF/
+      0xFUN/
+      UVT/
+    training/                  ← Sub-category: Training
+      picoCTF/                 ← Platform group
+      Dreamhack/
+```
 
-2. Add your writeup `.md` files inside:
-   ```
-   _posts/ctf/tournament/NewContestName/2026-03-04-challenge-name.md
-   ```
+The `categories` field in frontmatter maps to this: `categories: [<Category>, <Sub-category>]`
 
-3. Use this frontmatter:
-   ```yaml
-   ---
-   title: "Challenge Name - NewContest Write Up"
-   date: 2026-03-04
-   categories: [CTF, Tournament]
-   tags: [NewContestName, pwn]
-   description: "Writeup description"
-   ---
-   ```
+---
 
-4. That's it! Jekyll auto-discovers posts in subfolders. The post will appear on the home page and under **Categories → Tournament**.
+### Adding a Post to an Existing Sub-category
 
-### Adding a New Training Platform
+Just create a folder for the contest/platform (if it doesn't exist) and add your `.md`:
 
-1. Create a new folder under `_posts/ctf/training/`:
-   ```bash
-   mkdir _posts/ctf/training/Dreamhack
-   ```
+```bash
+mkdir -p _posts/ctf/tournament/NewContest
+```
 
-2. Add writeup files inside:
-   ```
-   _posts/ctf/training/Dreamhack/2026-03-04-exercise-name.md
-   ```
+```yaml
+# _posts/ctf/tournament/NewContest/2026-03-04-challenge.md
+---
+title: "Challenge - NewContest Write Up"
+date: 2026-03-04
+categories: [CTF, Tournament]
+tags: [NewContest, pwn]
+description: "Writeup description"
+---
+```
 
-3. Use this frontmatter:
-   ```yaml
-   ---
-   title: "Exercise Name - Dreamhack Write Up"
-   date: 2026-03-04
-   categories: [CTF, Training]
-   tags: [Dreamhack, web]
-   description: "Writeup description"
-   ---
-   ```
+No other config changes needed. Jekyll auto-discovers posts in subfolders.
 
-### Adding a Completely New Category (beyond Tournament/Training)
+---
 
-If you want to add a brand new category (e.g., `Research`):
+### Adding a New Sub-category
 
-1. Add posts with the new category in frontmatter:
-   ```yaml
-   categories: [CTF, Research]
-   ```
+Example: add a **Research** sub-category under CTF.
 
-2. Create the folder structure:
-   ```bash
-   mkdir -p _posts/ctf/research/TopicName
-   ```
+**Step 1** — Create the folder:
 
-3. Create a category page at `categories/research.html`:
-   ```yaml
-   ---
-   layout: category
-   title: Research
-   category: Research
-   permalink: /categories/research/
-   ---
-   ```
+```bash
+mkdir -p _posts/ctf/research/TopicName
+```
 
-4. Update `categories/index.html` to include the new category card.
+**Step 2** — Add posts with the new sub-category in frontmatter:
 
-5. Optionally add a filter button to `index.html`:
-   ```html
-   <button class="cat-btn" data-category="Research">Research</button>
-   ```
+```yaml
+# _posts/ctf/research/TopicName/2026-03-04-article.md
+---
+title: "Research Article"
+date: 2026-03-04
+categories: [CTF, Research]
+tags: [malware, analysis]
+description: "Description"
+---
+```
+
+**Step 3** — Create a sub-category page at `categories/research.html`:
+
+```yaml
+---
+layout: category
+title: Research
+category: Research
+permalink: /categories/research/
+---
+```
+
+**Step 4** — Add the card to `categories/index.html` inside the `.category-children` div:
+
+```html
+<a href="{{ '/categories/research/' | relative_url }}" class="category-card">
+  <div class="category-card-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+  <div class="category-card-info">
+    <h3 class="category-card-title">Research</h3>
+    <p class="category-card-count">{{ research_posts.size }} posts</p>
+  </div>
+  <svg class="category-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+</a>
+```
+
+**Step 5** — (Optional) Add a filter button to `index.html`:
+
+```html
+<button class="cat-btn" data-category="Research">Research</button>
+```
+
+---
+
+### Adding a Brand New Category
+
+Example: add a completely new top-level category **Blog** (separate from CTF).
+
+**Step 1** — Create the folder structure:
+
+```bash
+mkdir -p _posts/blog/tech
+mkdir -p _posts/blog/personal
+```
+
+**Step 2** — Add posts with the new category:
+
+```yaml
+# _posts/blog/tech/2026-03-04-my-article.md
+---
+title: "My Article"
+date: 2026-03-04
+categories: [Blog, Tech]
+tags: [linux, tools]
+description: "Description"
+---
+```
+
+**Step 3** — Create sub-category pages:
+
+```yaml
+# categories/tech.html
+---
+layout: category
+title: Tech
+category: Tech
+permalink: /categories/tech/
+---
+```
+
+```yaml
+# categories/personal.html
+---
+layout: category
+title: Personal
+category: Personal
+permalink: /categories/personal/
+---
+```
+
+**Step 4** — Add a new `.category-group` block in `categories/index.html` (copy the CTF block and change names/icons).
+
+**Step 5** — Add filter buttons to `index.html`:
+
+```html
+<button class="cat-btn" data-category="Tech">Tech</button>
+<button class="cat-btn" data-category="Personal">Personal</button>
+```
+
+---
+
+### Quick Reference
+
+| I want to...                         | What to do                                                        |
+|--------------------------------------|-------------------------------------------------------------------|
+| Add a post to existing sub-category  | Create `.md` in the right folder, set `categories` in frontmatter |
+| Add a new contest/platform group     | `mkdir _posts/ctf/tournament/NewName` + add `.md` files           |
+| Add a new sub-category under CTF     | Folder + category page + update `categories/index.html`           |
+| Add a brand new top-level category   | Folder + sub-cat pages + new group in `categories/index.html`     |
 
 ---
 
