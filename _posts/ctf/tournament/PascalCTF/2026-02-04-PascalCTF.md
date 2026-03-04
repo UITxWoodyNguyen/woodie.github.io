@@ -1,6 +1,7 @@
 ---
 title: "PascalCTF Write Up"
 date: 2026-02-04
+categories: [CTF, Tournament]
 tags: [PascalCTF, web, pwn, crypto]
 description: "My team's write up for PascalCTF contest"
 ---

@@ -1,6 +1,7 @@
 ---
 title: "GCC - BITSCTF Write Up"
 date: 2026-02-26
+categories: [CTF, Tournament]
 tags: [BITSCTF, reverse]
 description: "This is the write up for GCC chall - BITSCTF contest"
 ---

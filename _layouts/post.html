@@ -32,6 +32,14 @@ layout: default
         <time datetime="{{ page.date | date_to_xmlschema }}">
           {{ page.date | date: "%B %d, %Y" }}
         </time>
+        {% if page.categories.size > 0 %}
+          <span class="meta-separator">&middot;</span>
+          <span class="post-categories-inline">
+            {% for cat in page.categories %}
+              <a href="{{ '/categories/' | append: cat | downcase | append: '/' | relative_url }}" class="post-card-category">{{ cat }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
         {% if page.tags.size > 0 %}
           <span class="meta-separator">&middot;</span>
           <span class="post-tags-inline">

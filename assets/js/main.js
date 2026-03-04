@@ -69,30 +69,52 @@
   const searchInput = document.getElementById('search-input');
   const postsGrid = document.getElementById('posts-grid');
   const noResults = document.getElementById('no-results');
+  var activeCategory = 'all';
+  var activeTag = '';
 
-  if (searchInput && postsGrid) {
-    searchInput.addEventListener('input', function () {
-      const query = this.value.toLowerCase().trim();
-      const cards = postsGrid.querySelectorAll('.post-card');
-      let visibleCount = 0;
+  function applyFilters() {
+    if (!postsGrid) return;
+    var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+    var cards = postsGrid.querySelectorAll('.post-card');
+    var visibleCount = 0;
 
-      cards.forEach(function (card) {
-        const title = (card.getAttribute('data-title') || '').toLowerCase();
-        const tags = (card.getAttribute('data-tags') || '').toLowerCase();
-        const excerpt = (card.getAttribute('data-excerpt') || '').toLowerCase();
+    cards.forEach(function (card) {
+      var title = (card.getAttribute('data-title') || '').toLowerCase();
+      var tags = (card.getAttribute('data-tags') || '').toLowerCase();
+      var excerpt = (card.getAttribute('data-excerpt') || '').toLowerCase();
+      var category = (card.getAttribute('data-category') || '').toLowerCase();
 
-        const match = !query || 
-          title.includes(query) || 
-          tags.includes(query) || 
-          excerpt.includes(query);
+      var matchSearch = !query || title.includes(query) || tags.includes(query) || excerpt.includes(query);
+      var matchCategory = activeCategory === 'all' || category.includes(activeCategory.toLowerCase());
+      var matchTag = !activeTag || tags.includes(activeTag.toLowerCase());
 
-        card.style.display = match ? '' : 'none';
-        if (match) visibleCount++;
+      var visible = matchSearch && matchCategory && matchTag;
+      card.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener('input', applyFilters);
+  }
+
+  // ============================================================
+  // Category Filter
+  // ============================================================
+  const catButtons = document.querySelectorAll('.cat-btn');
+
+  if (catButtons.length > 0) {
+    catButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        catButtons.forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        activeCategory = this.getAttribute('data-category');
+        applyFilters();
       });
-
-      if (noResults) {
-        noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-      }
     });
   }
 
@@ -106,39 +128,17 @@
       btn.addEventListener('click', function () {
         const tag = this.getAttribute('data-tag');
 
-        // Toggle active state
         if (this.classList.contains('active')) {
           this.classList.remove('active');
-          filterByTag('');
+          activeTag = '';
         } else {
           tagButtons.forEach(function (b) { b.classList.remove('active'); });
           this.classList.add('active');
-          filterByTag(tag);
+          activeTag = tag;
         }
+        applyFilters();
       });
     });
-  }
-
-  function filterByTag(tag) {
-    if (!postsGrid) return;
-    const cards = postsGrid.querySelectorAll('.post-card');
-    let visibleCount = 0;
-
-    cards.forEach(function (card) {
-      const cardTags = (card.getAttribute('data-tags') || '').toLowerCase();
-      const match = !tag || cardTags.includes(tag.toLowerCase());
-      card.style.display = match ? '' : 'none';
-      if (match) visibleCount++;
-    });
-
-    if (noResults) {
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-
-    // Clear search when filtering by tag
-    if (searchInput) {
-      searchInput.value = '';
-    }
   }
 
   // ============================================================

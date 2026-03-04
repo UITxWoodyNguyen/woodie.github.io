@@ -1,6 +1,7 @@
 ---
 title: "Orbital Relay - BITSCTF Write Up"
 date: 2026-02-26
+categories: [CTF, Tournament]
 tags: [BITSCTF, pwn]
 description: "This is the write up for Orbital Relay chall - BITSCTF contest"
 ---
