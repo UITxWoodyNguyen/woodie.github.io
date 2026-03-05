@@ -446,6 +446,7 @@ description: "This is a Reverse Engineering challenge from Dreamhack CTF"
     ```
 
 ### Conclusion
+
 | Kỹ thuật | Mô tả |
 |----------|-------|
 | Anti-disassembly | Pattern `eb ff c1 ff c9` làm IDA hiểu sai code flow |
