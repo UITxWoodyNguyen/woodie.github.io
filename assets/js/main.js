@@ -163,41 +163,33 @@
   }
 
   // ============================================================
-  // Category Filter
+  // Category & Tag Dropdown Filters
   // ============================================================
-  const catButtons = document.querySelectorAll('.cat-btn');
+  const categorySelect = document.getElementById('category-select');
+  const tagSelect = document.getElementById('tag-select');
+  const filterReset = document.getElementById('filter-reset');
 
-  if (catButtons.length > 0) {
-    catButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        catButtons.forEach(function (b) { b.classList.remove('active'); });
-        this.classList.add('active');
-        activeCategory = this.getAttribute('data-category');
-        applyFilters();
-      });
+  if (categorySelect) {
+    categorySelect.addEventListener('change', function () {
+      activeCategory = this.value;
+      applyFilters();
     });
   }
 
-  // ============================================================
-  // Tag Filter
-  // ============================================================
-  const tagButtons = document.querySelectorAll('.tag-btn');
+  if (tagSelect) {
+    tagSelect.addEventListener('change', function () {
+      activeTag = this.value;
+      applyFilters();
+    });
+  }
 
-  if (tagButtons.length > 0 && postsGrid) {
-    tagButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        const tag = this.getAttribute('data-tag');
-
-        if (this.classList.contains('active')) {
-          this.classList.remove('active');
-          activeTag = '';
-        } else {
-          tagButtons.forEach(function (b) { b.classList.remove('active'); });
-          this.classList.add('active');
-          activeTag = tag;
-        }
-        applyFilters();
-      });
+  if (filterReset) {
+    filterReset.addEventListener('click', function () {
+      activeCategory = 'all';
+      activeTag = '';
+      if (categorySelect) categorySelect.value = 'all';
+      if (tagSelect) tagSelect.value = '';
+      applyFilters();
     });
   }
 
