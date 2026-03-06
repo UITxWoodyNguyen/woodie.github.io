@@ -169,9 +169,19 @@
   const tagSelect = document.getElementById('tag-select');
   const filterReset = document.getElementById('filter-reset');
 
+  function updateSelectStyles() {
+    if (categorySelect) {
+      categorySelect.classList.toggle('has-value', categorySelect.value !== 'all');
+    }
+    if (tagSelect) {
+      tagSelect.classList.toggle('has-value', tagSelect.value !== '');
+    }
+  }
+
   if (categorySelect) {
     categorySelect.addEventListener('change', function () {
       activeCategory = this.value;
+      updateSelectStyles();
       applyFilters();
     });
   }
@@ -179,6 +189,7 @@
   if (tagSelect) {
     tagSelect.addEventListener('change', function () {
       activeTag = this.value;
+      updateSelectStyles();
       applyFilters();
     });
   }
@@ -189,6 +200,7 @@
       activeTag = '';
       if (categorySelect) categorySelect.value = 'all';
       if (tagSelect) tagSelect.value = '';
+      updateSelectStyles();
       applyFilters();
     });
   }
